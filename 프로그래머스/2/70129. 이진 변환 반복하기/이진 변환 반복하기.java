@@ -21,10 +21,9 @@ class Solution {
             int x = s.length()-count; // 0제거 후 길이
             length += x;
             s = Integer.toBinaryString(x); // x를 2진법 변환하고 s에 대입
-            time++;
+            answer[0]++;
         }
         
-        answer[0] = time;
         answer[1] = allcount;
         
         return answer;
