@@ -6,11 +6,11 @@ class Solution {
         
         int add = brown + yellow;
 
-        for(int i = 3; i <= add; i++) { // 노란 격자가 있으려면 가로, 세로 한 변의 크기는 최소 3이상
-            if(add % i == 0 && add/i > 2 && i >= add/i) {
-                int width = i;
-                int height = add/i;
-                if((width-2) * 2 + (height * 2) == brown) {
+        // 전체 타일의 약수를 찾습니다.
+        for (int height = 3; height <= Math.sqrt(add); height++) {
+            if (add % height == 0) {
+                int width = add / height;
+                if ((width - 2) * (height - 2) == yellow) {
                     answer[0] = width;
                     answer[1] = height;
                 }
