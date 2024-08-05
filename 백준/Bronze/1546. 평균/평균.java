@@ -1,19 +1,25 @@
-import java.util.Scanner;
 import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
 
-public class Main{
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        double[] score = new double[in.nextInt()]; // 배열에 점수를 담기
-        for(int i = 0; i < score.length; i++) {
-            score[i] = in.nextDouble();
-        }
-        in.close();
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine()); // 과목의 수
         double sum = 0;
-        Arrays.sort(score);
-        for(double s: score) {
-            sum += s;
+        double max = 0;
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        for(int i = 0; i < N; i++) {
+            double score = Double.parseDouble(st.nextToken());
+            if(score > max) {
+                max = score;
+            }
+            sum += score;
         }
-        System.out.println(((sum / score[score.length - 1]) * 100.0) / score.length);
+        br.close();
+        
+        System.out.println(((sum / max) * 100.0) / N);
     }
 }
