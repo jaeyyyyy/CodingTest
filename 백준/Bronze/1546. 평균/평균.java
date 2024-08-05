@@ -1,24 +1,19 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
-public class Main {
+public class Main{
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        
-        int N = in.nextInt(); // 총 과목 개수
-        double max = 0.0; // 최대 점수
-        double sum = 0.0; // 점수 평균
-        
-        for(int i = 0; i < N; i++) {
-            double score = in.nextDouble();
-            
-            if(score > max) {
-                max = score;
-            }
-            
-            sum += score;
+        double[] score = new double[in.nextInt()]; // 배열에 점수를 담기
+        for(int i = 0; i < score.length; i++) {
+            score[i] = in.nextDouble();
         }
         in.close();
-        
-        System.out.println(((sum/max) * 100.0) / N);
+        double sum = 0;
+        Arrays.sort(score);
+        for(double s: score) {
+            sum += s;
+        }
+        System.out.println(((sum / score[score.length - 1]) * 100.0) / score.length);
     }
 }
