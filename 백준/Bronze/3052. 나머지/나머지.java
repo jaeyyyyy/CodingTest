@@ -1,13 +1,15 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         int[] arr = new int[10];
         for(int i = 0; i < 10; i++) {
-            arr[i] = sc.nextInt() % 42;
+            arr[i] = Integer.parseInt(bf.readLine()) % 42;
         }
-        sc.close();
+        bf.close();
         boolean b;
         int count = 0;
         for(int i = 0; i < 10; i++) {
